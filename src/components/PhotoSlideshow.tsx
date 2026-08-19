@@ -107,6 +107,17 @@ export function PhotoSlideshow() {
                   className="w-full h-full object-cover select-none"
                   loading="eager"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    const photo = photos[currentIndex];
+                    if (photo?.fallbackUrl && !target.dataset.triedFallback) {
+                      target.dataset.triedFallback = 'true';
+                      target.src = photo.fallbackUrl;
+                    } else if (photo?.altFallbackUrl && !target.dataset.triedAltFallback) {
+                      target.dataset.triedAltFallback = 'true';
+                      target.src = photo.altFallbackUrl;
+                    }
+                  }}
                 />
 
                 {/* Subtle soft vignette */}

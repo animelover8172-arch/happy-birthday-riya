@@ -65,6 +65,16 @@ export function MemoryGallery() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (photo.fallbackUrl && !target.dataset.triedFallback) {
+                      target.dataset.triedFallback = 'true';
+                      target.src = photo.fallbackUrl;
+                    } else if (photo.altFallbackUrl && !target.dataset.triedAltFallback) {
+                      target.dataset.triedAltFallback = 'true';
+                      target.src = photo.altFallbackUrl;
+                    }
+                  }}
                 />
 
                 {/* Date Tag Badge */}
@@ -128,6 +138,16 @@ export function MemoryGallery() {
                   alt={selectedPhoto.title}
                   className="w-full h-full object-cover select-none"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (selectedPhoto.fallbackUrl && !target.dataset.triedFallback) {
+                      target.dataset.triedFallback = 'true';
+                      target.src = selectedPhoto.fallbackUrl;
+                    } else if (selectedPhoto.altFallbackUrl && !target.dataset.triedAltFallback) {
+                      target.dataset.triedAltFallback = 'true';
+                      target.src = selectedPhoto.altFallbackUrl;
+                    }
+                  }}
                 />
               </div>
 
