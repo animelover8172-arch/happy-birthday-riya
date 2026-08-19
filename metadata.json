@@ -1,0 +1,6 @@
+{
+  "name": "Happy Birthday Riya",
+  "description": "A beautiful, cute, emotional and aesthetic birthday surprise website crafted especially for Riya with voice greetings, cinematic photo memories, and special surprises.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
